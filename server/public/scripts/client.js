@@ -14,6 +14,18 @@ function addPlayer(){
         method: 'POST',
         url: '/player',
         data: { playerName: $('#newPlayerName').val() }
+
+    }).then(function() {
+        getAllPlayers();
     });//end ajax
 };//end addplayer
+
+function getallPlayers(){
+    $.ajax({
+        method: 'GET',
+        url: '/player',
+    }).then(function(response){
+        updatePlayerList(response);
+    });
+}
    
