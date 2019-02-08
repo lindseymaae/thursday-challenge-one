@@ -1,6 +1,6 @@
 console.log('in client.js');
 
-
+let playerList = [];
 $(document).ready(readyNow);
 
 function readyNow(){
@@ -10,12 +10,10 @@ function readyNow(){
 
 function addPlayer(){
     
-    let playerName = $('#nameInput').val();
-    $('#tableBody').append(`
-                <tr>
-                <td> ${playerName}
-                </td>
-            </tr>
-`
-    )
-}
+    $.ajax({
+        method: 'POST',
+        url: '/player',
+        data: { playerName: $('#newPlayerName').val() }
+    });//end ajax
+};//end addplayer
+   
